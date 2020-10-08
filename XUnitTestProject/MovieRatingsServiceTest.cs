@@ -12,13 +12,13 @@ namespace XUnitTestProject
 {
     public class MovieRatingsServiceTest
     {
-        private List<MovieRating> ratings = null;
+        private MovieRating[] ratings = null;
         private Mock<IMovieRatingsRepository> repoMock;
 
         public MovieRatingsServiceTest()
         {
             repoMock = new Mock<IMovieRatingsRepository>();
-            repoMock.Setup(repo => repo.GetAllMovieRatings()).Returns(() => ratings);
+            repoMock.Setup(repo => repo.Ratings).Returns(() => ratings);
         }
 
         // returns the number movies which have got the grade N.
@@ -30,7 +30,7 @@ namespace XUnitTestProject
         public void NumberOfMoviesWithGrade(int grade, int expected)
         {
             // arrange
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 3, DateTime.Now),
                 new MovieRating(2, 1, 3, DateTime.Now),
@@ -48,7 +48,7 @@ namespace XUnitTestProject
 
             // assert
             Assert.Equal(expected, result);
-            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
+            repoMock.Verify(repo => repo.Ratings, Times.Once);
         }
 
         [Theory]
@@ -81,7 +81,7 @@ namespace XUnitTestProject
         public void GetNumberOfReviewsFromReviewer(int reviewer, int expected)
         {
             // arrange
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(2, 1, 3, DateTime.Now),
                 new MovieRating(3, 1, 4, DateTime.Now),
@@ -97,7 +97,7 @@ namespace XUnitTestProject
 
             // assert
             Assert.Equal(expected, result);
-            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
+            repoMock.Verify(repo => repo.Ratings, Times.Once);
         }
 
 
@@ -109,7 +109,7 @@ namespace XUnitTestProject
 
         public void GetAverageRateFromReviewer(int reviewer, double expected)
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now),
                 new MovieRating(2, 1, 4, DateTime.Now),
@@ -129,7 +129,7 @@ namespace XUnitTestProject
         [Fact]
         public void GetAverageRateFromReviewerInvalidException()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now)
              };
@@ -152,7 +152,7 @@ namespace XUnitTestProject
 
         public void GetNumberOfRatesByReviewer(int reviewer, int grade, int expected)
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now),
                 new MovieRating(2, 1, 4, DateTime.Now),
@@ -178,7 +178,7 @@ namespace XUnitTestProject
 
         public void GetNumberOfReviews(int movie, int expected)
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now),
                 new MovieRating(2, 1, 4, DateTime.Now),
@@ -204,7 +204,7 @@ namespace XUnitTestProject
 
         public void GetAverageRateOfMovie(int movie, double expected)
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now),
                 new MovieRating(2, 1, 4, DateTime.Now),
@@ -225,7 +225,7 @@ namespace XUnitTestProject
         [Fact]
         public void GetAverageRateOfMovieInvalidException()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now)
              };
@@ -247,7 +247,7 @@ namespace XUnitTestProject
 
         public void GetNumberOfRates(int movie, int grade, int expected)
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now),
                 new MovieRating(2, 1, 4, DateTime.Now),
@@ -269,7 +269,7 @@ namespace XUnitTestProject
         [Fact]
         public void GetMoviesWithHighestNumberOfTopRates()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 5, DateTime.Now),
                 new MovieRating(1, 2, 5, DateTime.Now),
@@ -290,7 +290,7 @@ namespace XUnitTestProject
 
             // assert
             Assert.Equal(expected, result);
-            repoMock.Verify(repo => repo.GetAllMovieRatings(), Times.Once);
+            repoMock.Verify(repo => repo.Ratings, Times.Once);
 
         }
 
@@ -298,7 +298,7 @@ namespace XUnitTestProject
         [Fact]
         public void GetMostProductiveReviewers()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 4, DateTime.Now),
                 new MovieRating(2, 1, 4, DateTime.Now),
@@ -320,7 +320,7 @@ namespace XUnitTestProject
         [Fact]
         public void GetMostProductiveReviewersNoReviewers()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
 
             };
@@ -336,7 +336,7 @@ namespace XUnitTestProject
 
         public void GetTopRatedMovies()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 1, DateTime.Now),
                 new MovieRating(1, 2, 2, DateTime.Now),
@@ -365,7 +365,7 @@ namespace XUnitTestProject
 
         public void GetTopMoviesByReviewer()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 1, DateTime.Now.AddDays(-3)),
                 new MovieRating(1, 2, 2, DateTime.Now.AddDays(-6)),
@@ -393,7 +393,7 @@ namespace XUnitTestProject
 
         public void GetReviewersByMovie()
         {
-            ratings = new List<MovieRating>()
+            ratings = new MovieRating[]
             {
                 new MovieRating(1, 1, 1, DateTime.Now.AddDays(-3)),
                 new MovieRating(1, 2, 2, DateTime.Now.AddDays(-6)),

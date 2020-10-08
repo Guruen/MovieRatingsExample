@@ -24,7 +24,7 @@ namespace MovieRatingsApplication.Core.Services
             }
 
             HashSet<int> movies = new HashSet<int>();
-            foreach (MovieRating rating in RatingsRepository.GetAllMovieRatings())
+            foreach (MovieRating rating in RatingsRepository.Ratings)
             {
                 if (rating.Grade == grade)
                 {
@@ -36,24 +36,24 @@ namespace MovieRatingsApplication.Core.Services
 
         public int GetNumberOfReviewsFromReviewer(int reviewer)
         {
-            int count = 0;
-            foreach(MovieRating m in RatingsRepository.GetAllMovieRatings())
-            {
-                if (m.Reviewer == reviewer)
-                {
-                    count++;
-                }
-            }
-            return count;
+            //int count = 0;
+            //foreach(MovieRating m in RatingsRepository.Ratings)
+            //{
+            //    if (m.Reviewer == reviewer)
+            //    {
+            //        count++;
+            //    }
+            //}
+            //return count;
 
-            //return RatingsRepository.GetAllMovieRatings()
-            //    .Where(r => r.Reviewer == reviewer)
-            //    .Count();
+            return RatingsRepository.Ratings
+                .Where(r => r.Reviewer == reviewer)
+                .Count();
         }
 
         public List<int> GetMoviesWithHighestNumberOfTopRates()
         {
-            var movie5 = RatingsRepository.GetAllMovieRatings()
+            var movie5 = RatingsRepository.Ratings
                 .Where(r => r.Grade == 5)
                 .GroupBy(r => r.Movie)
                 .Select(group => new { 
@@ -71,7 +71,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public double GetAverageRateFromReviewer(int reviewer)
         {
-            var averageRating = RatingsRepository.GetAllMovieRatings()
+            var averageRating = RatingsRepository.Ratings
                 .Where(r => r.Reviewer == reviewer)
                 .Select(rating => rating.Grade).Average();
 
@@ -80,7 +80,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public int GetNumberOfRatesByReviewer(int reviewer, int grade)
         {
-            var numberofReviews = RatingsRepository.GetAllMovieRatings()
+            var numberofReviews = RatingsRepository.Ratings
                 .Where(r => r.Reviewer == reviewer)
                 .Where(g => g.Grade == grade).Count();
             
@@ -89,7 +89,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public int GetNumberOfReviews(int movie)
         {
-            var numberofReviews = RatingsRepository.GetAllMovieRatings()
+            var numberofReviews = RatingsRepository.Ratings
                 .Where(m => m.Movie == movie).Count();
 
             return numberofReviews;
@@ -97,7 +97,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public double GetAverageRateOfMovie(int movie)
         {
-            var averageRating = RatingsRepository.GetAllMovieRatings()
+            var averageRating = RatingsRepository.Ratings
                 .Where(m => m.Movie == movie)
                 .Select(rating => rating.Grade).Average();
 
@@ -107,7 +107,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public object GetNumberOfRates(int movie, int grade)
         {
-            var numberofRates = RatingsRepository.GetAllMovieRatings()
+            var numberofRates = RatingsRepository.Ratings
                 .Where(m => m.Movie == movie)
                 .Where(g => g.Grade == grade).Count();
 
@@ -116,7 +116,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public List<int> GetMostProductiveReviewers()
         {
-            var topReviewer = RatingsRepository.GetAllMovieRatings()
+            var topReviewer = RatingsRepository.Ratings
                 .GroupBy(r => r.Reviewer)
                 .Select(group => new
                 {
@@ -136,7 +136,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public List<int> GetTopRatedMovies(int numberofMovies)
         {
-            var topratedMovies = RatingsRepository.GetAllMovieRatings()
+            var topratedMovies = RatingsRepository.Ratings
                 .GroupBy(m => m.Movie)
                 .Select(group => new
                 {
@@ -152,7 +152,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public List<int> GetTopMoviesByReviewer(int reviewer)
         {
-            var sortedbyRating = RatingsRepository.GetAllMovieRatings()
+            var sortedbyRating = RatingsRepository.Ratings
                 .Where(r => r.Reviewer == reviewer)
                 .OrderByDescending(g => g.Grade)
                 .ThenByDescending(d => d.Date);
@@ -164,7 +164,7 @@ namespace MovieRatingsApplication.Core.Services
 
         public List<int> GetReviewersByMovie(int movie)
         {
-            var sortedbyRating = RatingsRepository.GetAllMovieRatings()
+            var sortedbyRating = RatingsRepository.Ratings
                 .Where(m => m.Movie == movie)
                 .OrderByDescending(g => g.Grade)
                 .ThenByDescending(d => d.Date);

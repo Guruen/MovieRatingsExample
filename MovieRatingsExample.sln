@@ -3,9 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRatingsApplication", "MovieRatingsService\MovieRatingsApplication.csproj", "{D27A4D86-70C6-4987-9468-876000460BF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRatingsApplication", "MovieRatingsService\MovieRatingsApplication.csproj", "{D27A4D86-70C6-4987-9468-876000460BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{E59A3036-5866-4A9D-B3CE-7D947C94ABF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{E59A3036-5866-4A9D-B3CE-7D947C94ABF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{8AEF6016-ACB2-46EF-BFA8-CF3C83514F86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRatingJSONRepository", "MovieRatingJSONRepository\MovieRatingJSONRepository.csproj", "{CA4D347F-B4CC-4355-B83A-166EFE989497}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F55B527A-A3E2-42D2-8202-D2FBF944E2DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{50967A72-60BF-4B9F-8D60-46518DF5CAFA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSONReaderConsole", "JSONReaderConsole\JSONReaderConsole.csproj", "{0C69AE3C-B5FF-4127-9297-CEF2F6175401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject - PerformanceTest", "XUnitTestProject - PerformanceTest\XUnitTestProject - PerformanceTest.csproj", "{3BFC05C6-9D06-4D0C-B6E8-AB3D7F5A7365}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +33,27 @@ Global
 		{E59A3036-5866-4A9D-B3CE-7D947C94ABF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E59A3036-5866-4A9D-B3CE-7D947C94ABF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E59A3036-5866-4A9D-B3CE-7D947C94ABF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA4D347F-B4CC-4355-B83A-166EFE989497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA4D347F-B4CC-4355-B83A-166EFE989497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA4D347F-B4CC-4355-B83A-166EFE989497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA4D347F-B4CC-4355-B83A-166EFE989497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C69AE3C-B5FF-4127-9297-CEF2F6175401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C69AE3C-B5FF-4127-9297-CEF2F6175401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C69AE3C-B5FF-4127-9297-CEF2F6175401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C69AE3C-B5FF-4127-9297-CEF2F6175401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFC05C6-9D06-4D0C-B6E8-AB3D7F5A7365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFC05C6-9D06-4D0C-B6E8-AB3D7F5A7365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFC05C6-9D06-4D0C-B6E8-AB3D7F5A7365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFC05C6-9D06-4D0C-B6E8-AB3D7F5A7365}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D27A4D86-70C6-4987-9468-876000460BF0} = {F55B527A-A3E2-42D2-8202-D2FBF944E2DA}
+		{E59A3036-5866-4A9D-B3CE-7D947C94ABF8} = {50967A72-60BF-4B9F-8D60-46518DF5CAFA}
+		{CA4D347F-B4CC-4355-B83A-166EFE989497} = {8AEF6016-ACB2-46EF-BFA8-CF3C83514F86}
+		{3BFC05C6-9D06-4D0C-B6E8-AB3D7F5A7365} = {50967A72-60BF-4B9F-8D60-46518DF5CAFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B19A6169-75F1-4527-BADD-5F681136F00E}
